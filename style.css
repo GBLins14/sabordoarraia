@@ -1,13 +1,15 @@
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #FFF8DC;
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #ffff95;
     color: #333;
     padding: 0;
     margin: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -22,7 +24,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #8B2500;
+    background-color: #d1ca0098;
     height: auto;
     width: 100%;
 }
@@ -33,14 +35,14 @@ html {
 
 .menus {
     display: flex;
-    gap: 50px;
+    gap: 70px;
     margin-top: 40px;
     margin-bottom: 20px;
 }
 
 .menu-link {
-    font-size: 1em;
-    color: #FFF8DC;
+    font-size: 1.2em;
+    color: #f9f9f9;
     text-decoration: none;
     font-weight: bold;
     transition: transform 0.5s ease;
@@ -65,9 +67,9 @@ html {
 
 
 .product-card {
-    background: #fff;
+    background: #f9f9f9;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.345);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     padding: 10px;
@@ -103,7 +105,7 @@ html {
 }
 
 .product-card .info .price {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #2e2e2e;
     font-weight: bold;
 }
@@ -113,8 +115,12 @@ html {
         font-size: 15px;
     }
 
+    .menu-link {
+        font-size: 1em;
+    }
+
     .product-card .info .price {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .product-grid {
