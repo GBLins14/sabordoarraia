@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Meu Carrinho - Sabor do Arraiá</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./imgs/logo.png" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Exo 2", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            background-color: #ffff95;
+            color: #333;
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+
+        .cart-item {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            padding-right: 120px;
+            word-break: break-word;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .item-price {
+            color: #3f9c01;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .item-qty {
+            display: inline-block;
+            background-color: #3f9c01;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .price-qty-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn-qty {
+            background-color: #3f9c01;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .btn-qty:hover {
+            background-color: #43a701;
+        }
+
+        .btn-remove {
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .btn-remove:hover {
+            background-color: #e60000;
+        }
+
+        .total {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .btn-voltar {
+            display: flex;
+            background-color: #2ba200;
+            color: white;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 95%;
+            margin-top: 20px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #43a701;
+            color: white;
+        }
+
+        .centralizado {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-next {
+            display: flex;
+            background-color: #a20000;
+            color: white;
+            padding: 15px;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 95%;
+            margin-top: 10px;
+        }
+
+        .btn-next:hover {
+            background-color: #b90000;
+            color: white;
+        }
+
+        /* 📱 RESPONSIVIDADE: para tablets e smartphones */
+        @media (max-width: 768px) {
+            .item-info {
+                padding-right: 0;
+            }
+
+            .price-qty-wrapper {
+                position: static;
+                margin-top: 10px;
+            }
+
+            .item-controls {
+                margin-top: 15px;
+            }
+
+            .btn-next {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-item {
+                flex-wrap: wrap;
+                align-items: center;
+                text-align: left;
+            }
+
+            .item-info {
+                padding-right: 0;
+            }
+
+            .item-controls {
+                justify-content: flex-start;
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+
+            .price-qty-wrapper {
+                position: static;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML INICIAL (já com placeholders e ID para serem manipulados no JS) -->
+    <div class="container">
+        <h1>Meu Carrinho</h1>
+        <div id="lista-carrinho">
+            <!-- Exemplo de item estático que será clonado via JS -->
+            <div class="cart-item template" style="display: none;">
+                <img src="" alt="" class="item-img">
+                <div class="item-info">
+                    <span class="item-name"></span>
+                    <div class="price-qty-wrapper">
+                        <span class="item-price"></span>
+                        <span class="item-qty"></span>
+                    </div>
+                    <div class="item-controls">
+                        <button class="btn-qty btn-menor">−</button>
+                        <button class="btn-qty btn-maior">+</button>
+                        <button class="btn-remove">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total" id="total-carrinho">Total: R$ 0,00</div>
+        <div class="centralizado">
+            <a class="btn-voltar" href="./index.html">← Continuar comprando</a>
+            <a class="btn-next" onclick="finalizarPedido()">→ Finalizar pedido</a>
+        </div>
+    </div>
+
+
+    <script>
+        function formatarPreco(valor) {
+            return `R$ ${valor.toFixed(2).replace('.', ',')}`;
+        }
+
+        function renderCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const lista = document.getElementById("lista-carrinho");
+            const totalElem = document.getElementById("total-carrinho");
+
+            // Remove todos os itens (menos o template)
+            [...lista.querySelectorAll(".cart-item:not(.template)")].forEach(el => el.remove());
+
+            if (carrinho.length === 0) {
+                lista.innerHTML += "<p>Nenhum item no carrinho.</p>";
+                totalElem.textContent = "Total: R$ 0,00";
+                return;
+            }
+
+            const template = document.querySelector(".cart-item.template");
+            let total = 0;
+
+            carrinho.forEach((produto, index) => {
+                const item = template.cloneNode(true);
+                item.classList.remove("template");
+                item.style.display = "flex";
+
+                item.querySelector(".item-img").src = produto.imagem;
+                item.querySelector(".item-img").alt = produto.nome;
+                item.querySelector(".item-name").textContent = produto.nome;
+                item.querySelector(".item-price").textContent = formatarPreco(produto.preco);
+                item.querySelector(".item-qty").textContent = `QTD: ${produto.quantidade}`;
+
+                item.querySelector(".btn-maior").onclick = () => {
+                    carrinho[index].quantidade += 1;
+                    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                    renderCarrinho();
+                };
+
+                item.querySelector(".btn-menor").onclick = () => {
+                    if (carrinho[index].quantidade > 1) {
+                        carrinho[index].quantidade -= 1;
+                    } else {
+                        carrinho.splice(index, 1);
+                    }
+                    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                    renderCarrinho();
+                };
+
+                item.querySelector(".btn-remove").onclick = () => {
+                    carrinho.splice(index, 1);
+                    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                    renderCarrinho();
+                };
+
+                lista.appendChild(item);
+                total += produto.preco * produto.quantidade;
+            });
+
+            totalElem.textContent = `Total: ${formatarPreco(total)}`;
+        }
+
+        function finalizarPedido() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+            if (carrinho.length === 0) {
+                alert("Sem produtos no carrinho.");
+                return;
+            }
+
+            const savedCart = JSON.parse(localStorage.getItem("userCartId"));
+            const now = Date.now();
+
+            if (!savedCart || now > savedCart.expiresAt) {
+                const cartId = Math.floor(10000 + Math.random() * 90000);
+                const expiresAt = now + 10 * 60 * 1000;
+
+                const userCartId = {
+                    id: cartId,
+                    expiresAt: expiresAt
+                };
+
+                localStorage.setItem("userCartId", JSON.stringify(userCartId));
+                console.log("🆕 Novo cartId gerado:", cartId);
+            } else {
+                console.log("♻️ cartId reutilizado:", savedCart.id);
+            }
+
+            window.location.href = "./dados.html";
+            const totalProdutos = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+            const totalValor = carrinho.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCarrinho);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Forma de Pagamento - Sabor do Arraiá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./imgs/logo.png" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body,
+        html {
+            height: 100%;
+            font-family: "Exo 2", sans-serif;
+            background-color: #ffff95;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .radio-group {
+            margin-bottom: 20px;
+            background-color: #ffffff80;
+            border-radius: 20px;
+            padding: 10px;
+            width: 92%;
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-confirmar {
+            background-color: #a20000;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #b90000;
+            color: white;
+        }
+
+        .btn-voltar {
+            background-color: #3f9c01;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            margin-bottom: 10px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #43a701;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centralizado">
+            <h1>Escolha a forma de pagamento</h1>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="pagamento" value="Pix" checked />
+                    Pix
+                </label>
+                <label>
+                    <input type="radio" name="pagamento" value="Cartão" />
+                    Cartão de Débito/Crédito
+                </label>
+                <label>
+                    <input type="radio" name="pagamento" value="Dinheiro" />
+                    Dinheiro
+                </label>
+            </div>
+
+            <a href="./index.html" class="btn btn-voltar">← Voltar ao início</a>
+            <a class="btn btn-confirmar" onclick="confirmarPagamento()">Confirmar</a>
+        </div>
+    </div>
+
+    <script>
+        function confirmarPagamento() {
+            const tipoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+
+            const formaPagamento = {
+                tipo: tipoPagamento
+            };
+            localStorage.setItem("formaPagamento", JSON.stringify(formaPagamento));
+
+            window.location.href = "./finalizar.html";
+        }
+    </script>
+</body>
+
+</html>

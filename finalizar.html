@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Forma de Pagamento - Sabor do Arraiá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./imgs/logo.png" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body,
+        html {
+            height: 100%;
+            font-family: "Exo 2", sans-serif;
+            background-color: #ffff95;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            margin-bottom: 20px;
+            background-color: #ffffff80;
+            border-radius: 20px;
+            padding: 10px;
+            width: 92%;
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-confirmar {
+            background-color: #ff0000b7;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #b90000;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centralizado">
+            <h1>Conclua seu pedido no nosso WhatsApp!</h1>
+
+            <div class="radio-group">
+                <h3>Vamos te redirecionar para o nosso whatsapp, lá você pode efetuar o pagamento e concluir o seu
+                    pedido.</h3>
+            </div>
+
+            <a class="btn btn-confirmar" onclick="concluirPedido()">Ir para o WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        function concluirPedido() {
+            // Defina o URL do seu webhook do Discord
+            const discordWebhookUrl = 'https://discord.com/api/webhooks/1367718211965030420/wDnBB4XrkCNURV3cgxfqu8yvayAGK-ljJCGeGXqQhRR3QBpsOA-lxbC8hozPrCV1_MIv';
+
+            // Coleta os dados do localStorage
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const dadosCliente2 = JSON.parse(localStorage.getItem('dadosCliente')) || {};
+            const dadosPagamento = JSON.parse(localStorage.getItem('formaPagamento')) || {};
+            const userId = JSON.parse(localStorage.getItem('userCartId')) || {};
+            const dadosEntrega = JSON.parse(localStorage.getItem("formaEntrega")) || {};
+
+
+            let total = 0;
+
+            // Monta o conteúdo da mensagem
+            let message = `🛒 **Pedido número**: #${userId.id}\n`;
+
+            carrinho.forEach(produto => {
+                const subtotal = produto.preco * produto.quantidade;
+                total += subtotal;
+                message += `- ${produto.nome} (x${produto.quantidade}) - R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+            });
+
+            message += `\n👤 **Nome do Cliente**: ${dadosCliente2.nome}\n`;
+            message += `📞 **Telefone**: ${dadosCliente2.tel}\n`;
+            message += `💳 **Forma de pagamento**: ${dadosPagamento.tipo}\n`;
+            message += `💰 **Total**: R$ ${total.toFixed(2).replace('.', ',')}\n`;
+            message += `\n**Forma de entrega**: ${dadosEntrega.tipo}\n`;
+            message += `**CEP**: ${dadosEntrega.cep}\n`;
+            message += `**Endereço**: ${dadosEntrega.endereco}\n`;
+
+            // Envia os dados para o webhook do Discord
+            fetch(discordWebhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: message })
+            })
+                .then(response => response.json())
+                .then(data => console.log('Mensagem enviada com sucesso:', data))
+
+
+            window.location.href = `https://wa.me/5581997932109?text=Quero%20concluir%20meu%20pedido.%0A%0ANumero%20do%20pedido%3A%20%23${userId.id}`;
+        }
+    </script>
+</body>
+
+</html>

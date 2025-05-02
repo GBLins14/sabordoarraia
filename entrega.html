@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Escolha de Entrega - Sabor do Arraiá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./imgs/logo.png" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body,
+        html {
+            height: 100%;
+            font-family: "Exo 2", sans-serif;
+            background-color: #ffff95;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .radio-group {
+            margin-bottom: 20px;
+        }
+
+        .radio-group input {
+            margin-right: 8px;
+        }
+
+        #campo-endereco {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-confirmar {
+            background-color: #a20000;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #b90000;
+            color: white;
+        }
+
+        .btn-voltar {
+            background-color: #3f9c01;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            margin-bottom: 10px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #43a701;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centralizado">
+            <h1>Escolha a forma de entrega</h1>
+
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="entrega" value="Retirar no local da produção" checked />
+                    Retirar no local de produção
+                </label>
+                <label>
+                    <input type="radio" name="entrega" value="Entregar no meu endereço" />
+                    Entregar no meu endereço
+                </label>
+            </div>
+
+            <div id="campo-endereco">
+                <label for="cep">Digite o CEP:</label>
+                <input type="text" id="cep" placeholder="Exemplo: 51160-000" />
+                <a href="./frete.html" style="text-decoration: none; color: rgb(255, 0, 0);">O valor do frete depende da onde você vai receber, clique aqui e saiba mais.</a>
+
+                <p id="resultado"></p>
+                <label for="endereco">Endereço para entrega</label>
+                <textarea id="endereco" rows="4" placeholder="Rua, número, bairro, cidade..."></textarea>
+            </div>
+
+            <a href="./index.html" class="btn btn-voltar">← Voltar ao início</a>
+            <a class="btn btn-confirmar" onclick="confirmarEntrega()">Confirmar</a>
+        </div>
+    </div>
+
+    <script>
+        const radios = document.querySelectorAll('input[name="entrega"]');
+        const campoEndereco = document.getElementById("campo-endereco");
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", () => {
+                campoEndereco.style.display = (radio.value === "Entregar no meu endereço") ? "block" : "none";
+            });
+        });
+
+        function confirmarEntrega() {
+            const tipoEntrega = document.querySelector('input[name="entrega"]:checked').value;
+            const endereco = document.getElementById("endereco").value.trim();
+            const cep = document.getElementById("cep").value.trim();
+
+            if (tipoEntrega === "Entregar no meu endereço" && !endereco) {
+                alert("Por favor, informe o endereço para entrega.");
+                return;
+            }
+
+            const dadosEntrega = {
+                tipo: tipoEntrega,
+                cep: cep,
+                endereco: tipoEntrega === "Entregar no meu endereço" ? endereco : null
+            };
+
+            localStorage.setItem("formaEntrega", JSON.stringify(dadosEntrega));
+
+            window.location.href = "./pagamento.html";
+        }
+    </script>
+</body>
+
+</html>

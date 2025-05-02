@@ -7,89 +7,199 @@
     <title>Sabor do Arraiá</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="imgs/logo.png" type="image/webp">
+    <link rel="icon" href="./imgs/logo.png" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="header">
-        <img src="imgs/logo.png" alt="Logo Sabor do Arraiá" class="logo">
+        <img src="./imgs/logo.png" alt="Logo Sabor do Arraiá" class="logo">
         <div class="menus">
             <a href="/#cardapio" class="menu-link">Cardápio</a>
-            <a href="/sobre.html" class="menu-link">Sobre</a>
+            <a href="/sobre.html" class="menu-link">Como funciona</a>
             <a href="/contatos.html" class="menu-link">Contatos</a>
         </div>
     </div>
 
     <div class="container">
         <div id="cardapio" class="product-grid">
-            <a href="https://wa.link/4jeb2w" class="product-card">
-                <img src="imgs/PamonhaQueijo.webp" alt="Produto 1">
+            <div class="product-card"> <!-- https://wa.link/4jeb2w -->
+                <img src="./imgs/PamonhaQueijo.webp" alt="Produto 1">
                 <div class="info">
                     <h3>Pamonha Salgada C/ Queijo Coalho</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 7,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 7,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://wa.link/4jeb2w" class="product-card">
-                <img src="imgs/PamonhaQueijo.webp" alt="Produto 2">
+            <div class="product-card">
+                <img src="./imgs/PamonhaQueijo.webp" alt="Produto 2">
                 <div class="info">
                     <h3>Pamonha Doce C/ Queijo Coalho</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 7,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 7,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://wa.link/4jeb2w" class="product-card">
-                <img src="imgs/pamonha.webp" alt="Produto 3">
+            <div class="product-card">
+                <img src="./imgs/pamonha.webp" alt="Produto 3">
                 <div class="info">
                     <h3>Pamonha Salgada</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 6,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 6,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
-            
-            <a href="https://wa.link/4jeb2w" class="product-card">
-                <img src="imgs/pamonha.webp" alt="Produto 4">
+            </div>
+
+            <div class="product-card">
+                <img src="./imgs/pamonha.webp" alt="Produto 4">
                 <div class="info">
                     <h3>Pamonha Doce</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 6,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 6,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://wa.link/4jeb2w" class="product-card">
-                <img src="imgs/canjica.webp" alt="Produto 5">
+            <div class="product-card">
+                <img src="./imgs/canjica.jpeg" alt="Produto 5">
                 <div class="info">
                     <h3>Canjica</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 5,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 5,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://wa.link/4jeb2w" class="product-card">
+            <div class="product-card">
                 <img src="imgs/arrozdoce.webp" alt="Produto 6">
                 <div class="info">
                     <h3>Arroz Doce</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 5,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 5,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://wa.link/4jeb2w" class="product-card">
+            <div class="product-card"s>
                 <img src="imgs/milho.webp" alt="Produto 7">
                 <div class="info">
                     <h3>Milho Cozido</h3>
                     <div class="rating">★★★★★</div>
-                    <div class="price">R$ 5,00</div>
+                    <div class="info2">
+                        <div class="price">R$ 5,00</div>
+                        <button class="btn-add" onclick="adicionarAoCarrinho(this)"><img
+                                src="./imgs/addcart.svg"></button>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
+
+        <div class="cart-bar">
+            <div class="cart-content">
+                <img src="imgs/cart.svg" alt="Carrinho" class="cart-bar-icon">
+                <div class="cart-info-texts">
+                    <strong><span id="cart-count">0</span> itens no carrinho</strong>
+                    <small>Total: <span id="cart-total">R$ 0,00</span></small>
+                </div>
+                <div class="cart-buttons">
+                    <button class="btn-ver-carrinho" onclick="window.location.href='./carrinho.html'">Ver
+                        Carrinho</button>
+                    <button class="btn-limpar-carrinho" style="margin-right: 30px;" onclick="limparCarrinho()">Limpar</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
+    <script>
+
+        function getCarrinho() {
+            return JSON.parse(localStorage.getItem('carrinho')) || [];
+        }
+
+        function setCarrinho(lista) {
+            localStorage.setItem('carrinho', JSON.stringify(lista));
+        }
+
+        function adicionarAoCarrinho(botao) {
+            const produtoCard = botao.closest('.product-card');
+            const nome = produtoCard.querySelector('h3').textContent;
+            const precoTexto = produtoCard.querySelector('.price').textContent.replace('R$', '').replace(',', '.');
+            const preco = parseFloat(precoTexto);
+            const imagem = produtoCard.querySelector('img').getAttribute('src');
+
+
+            // Obtém o carrinho do localStorage
+            const carrinho = getCarrinho();
+
+            // Verifica se o produto já existe no carrinho
+            const produtoExistente = carrinho.find(item => item.nome === nome && item.imagem === imagem);
+
+            if (produtoExistente) {
+                // Se o produto já estiver no carrinho, aumenta a quantidade
+                produtoExistente.quantidade += 1;
+            } else {
+                // Se não, adiciona o novo produto com quantidade 1
+                carrinho.push({ nome, preco, imagem, quantidade: 1 });
+            }
+
+            // Atualiza o carrinho no localStorage
+            setCarrinho(carrinho);
+
+            // Atualiza o contador de itens e total
+            atualizarContador();
+        }
+
+
+
+
+        function atualizarContador() {
+            const carrinho = getCarrinho();
+            const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0); // Soma a quantidade de cada item
+            const totalPreco = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0); // Calcula o total
+
+            document.getElementById("cart-count").textContent = totalItens;
+            document.getElementById("cart-total").textContent = `R$ ${totalPreco.toFixed(2).replace('.', ',')}`;
+        }
+
+
+        function limparCarrinho() {
+            localStorage.removeItem('carrinho');
+            atualizarContador();
+        }
+
+        document.addEventListener("DOMContentLoaded", atualizarContador);
+    </script>
+
+
+
+
 </body>
 
 </html>
